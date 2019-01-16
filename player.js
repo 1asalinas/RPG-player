@@ -3,13 +3,21 @@
 let p1Name = "";
 
 let p1Stats = {
-
+  hp: 125,
+  mp: 75,
+  atk: 75,
+  def: 20,
+  sp: 25
 }
 
 let p2Name = "";
 
 let p2Stats = {
-
+  hp: 75,
+  mp: 125,
+  atk: 10,
+  def: 10,
+  sp: 100
 }
 
 let battle = {
