@@ -3,11 +3,11 @@
 let p1Name = "";
 
 let p1Stats = {
-  hp: 125,
-  mp: 75,
-  atk: 75,
+  hp: 200,
+  mp: 0,
+  atk: 100,
   def: 20,
-  sp: 25
+  sp: 0
 }
 
 let p2Name = "";
@@ -15,8 +15,8 @@ let p2Name = "";
 let p2Stats = {
   hp: 75,
   mp: 125,
-  atk: 10,
-  def: 10,
+  atk: 0,
+  def: 20,
   sp: 100
 }
 
@@ -46,11 +46,19 @@ let p1battle = {
 }
 
 let physical = {
+
   razorPunch: function(){
     let baseDamage = this.stats.atk * 0.75;
     let bonus = 0.5 * this.stats.atk * Math.random();
     return baseDamage + bonus;
   },
+
+  falconPunch: function(){
+    let baseDamage = this.stats.atk * 0.50;
+    let bonus = this.stats.atk * Math.random();
+    return baseDamage + bonus;
+  },
+
   charge: function(){
     let pain = Math.random();
     let bonus = 0.5 * this.stats.atk * Math.random();
@@ -61,10 +69,35 @@ let physical = {
     else{
       return this.stats.atk + bonus;
     }
+  },
+
+  Roundhouse_Kick: function(){
+    let tetraDice = Math.random();
+    let kick = Math.ceil(this.stats.atk / 2);
+
+    if(tetraDice < 0.33){
+      return kick;
+    }
+
+    else if(tetraDice < 0.66){
+      return 2 * kick;
+    }
+
+    else{
+     return 3 * kick;
+    }
   }
+
 }
 
 let magic = {
+  Pyro_ball: function(){
+    if(this.stats.mp >= 6){
+      this.stats.mp = this.stats.mp - 6;
+      
+    }
+  },
+
   hydroPump: function(){
     if(this.stats.mp >= 8){
       this.stats.mp = this.stats.mp - 8;
@@ -87,6 +120,15 @@ let magic = {
         return 4 * pump;
       }
 
+    }
+
+  },
+
+  hyperBeam: function(){
+    if(this.stats.mp >= 20){
+      this.stats.mp = this.stats.mp - 20;
+    let damage = this.stats.sp * 1.50;
+    return damage;
     }
 
   }
