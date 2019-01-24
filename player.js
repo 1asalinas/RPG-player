@@ -1,6 +1,6 @@
 //generic stats object
 
-let p1Name = "";
+let p1Name = "Saitama";
 
 let p1Stats = {
 
@@ -62,11 +62,17 @@ let p1Battle = {
 
   attack: function(mv){
     if (mv == 1){
-      return this.moves.punch();
+      return this.moves.Charge();
     }
 
     else if(mv == 2){
-      return this.moves.other();
+      return this.moves.RazorPunch();
+    }
+    else if(mv == 3){
+      return this.moves.Roundhouse_Kick();
+    }
+    else if(mv == 4){
+      return this.moves.FalconPunch();
     }
   },
 
@@ -98,8 +104,8 @@ let p2Name = "";
 
 let p2Stats = {
 
-  hp: 75,
-  mp: 125,
+  hp: 80,
+  mp: 120,
   atk: 0,
   def: 20,
   sp: 100
@@ -117,7 +123,7 @@ let p2Moves = {
     }
   },
 
-  hydroPump: function(){
+  HydroPump: function(){
 
     if(this.stats.mp >= 8){
 
@@ -155,7 +161,7 @@ let p2Moves = {
     }
   },
 
-  hyperBeam: function(){
+  HyperBeam: function(){
 
     if(this.stats.mp >= 20){
       this.stats.mp = this.stats.mp - 20;
@@ -171,11 +177,17 @@ let p2Battle = {
 
   attack: function(mv){
     if (mv == 1){
-      return this.moves.punch();
+      return this.moves.HyperBeam();
     }
 
     else if(mv == 2){
-      return this.moves.other();
+      return this.moves.HyperBeam();
+    }
+    else if(mv == 3){
+      return this.moves.Blizzard();
+    }
+    else if(mv == 4){
+      return this.moves.Pyro_ball();
     }
   },
 
@@ -277,19 +289,19 @@ let player2 = {
 
 let physical = {
 
-  razorPunch: function(){
+  RazorPunch: function(){
     let baseDamage = this.stats.atk * 0.75;
     let bonus = 0.5 * this.stats.atk * Math.random();
     return baseDamage + bonus;
   },
 
-  falconPunch: function(){
+  FalconPunch: function(){
     let baseDamage = this.stats.atk * 0.50;
     let bonus = this.stats.atk * Math.random();
     return baseDamage + bonus;
   },
 
-  charge: function(){
+  Charge: function(){
     let pain = Math.random();
     let bonus = 0.5 * this.stats.atk * Math.random();
     if(pain < 0.50){
@@ -328,7 +340,7 @@ let magic = {
     }
   },
 
-  hydroPump: function(){
+  HydroPump: function(){
     if(this.stats.mp >= 8){
       this.stats.mp = this.stats.mp - 8;
       let tetraDice = Math.random();
@@ -354,7 +366,7 @@ let magic = {
 
   },
 
-  hyperBeam: function(){
+  HyperBeam: function(){
     if(this.stats.mp >= 20){
       this.stats.mp = this.stats.mp - 20;
     let damage = this.stats.sp * 1.50;
@@ -364,10 +376,6 @@ let magic = {
   }
   
 }
-
-
-
-
 
 
 
